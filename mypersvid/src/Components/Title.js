@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Title =   () =>(
+const Title =   ({title}) =>(
 
     <div div className = "Title" >
         <header>
-            <h1>VIDEOS PERSONALIZADOS</h1>
+            <h1>{title}</h1>
         </header>
     </div>
 
