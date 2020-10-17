@@ -23,10 +23,12 @@ const useStyles = makeStyles({
   },
 });
 
-const Cart = ({sentence1, sentence2, button1}) => {
+
+
+
+const Cart = ({sentence1, sentence2, button1, onClick}) => {
 
   const classes = useStyles();
-
 
   return (
 
@@ -42,7 +44,7 @@ const Cart = ({sentence1, sentence2, button1}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" >{button1}</Button>
+        <Button onClick={onClick} size="small" >{button1}</Button>
       </CardActions>
     </Card>
   );
