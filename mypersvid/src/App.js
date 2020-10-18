@@ -15,10 +15,7 @@ const useStyles = makeStyles({
 })
 
 
-const generate = () => {
 
-  console.log('HOLA TODO BIEN 2');
-}
 
 const send = () => {
 
@@ -33,6 +30,7 @@ const App = () => {
 const classes = useStyles();
 
 const [selectedFile, setSelectedFile] = useState(); 
+const [message, setMessage] = useState();
 
 const handleInputChange = (event)=> {
             setSelectedFile( event.target.files[0])
@@ -49,15 +47,21 @@ const handleInputChange = (event)=> {
             method:'POST',
             url:url,
             header:{
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data" 
             },
             data:data,
         }
         ).then(//function(response)
             
             response => {
-                const datum = response.data.data
-                console.log(datum)
+                const estado = response.data.status
+                const pk = response.data.pk
+                setMessage(response.data.message)
+                if (estado === 200){
+                    generate(pk)
+                }
+
+                console.log(estado)
             }
           //  console.log(response)
         
@@ -69,7 +73,40 @@ const handleInputChange = (event)=> {
         });
     }
 
+const generate = (e) => {
 
+  const data = new FormData() 
+  data.append('pk', e)
+  console.warn(e);
+  let url = "http://test-backend-dev2.us-east-2.elasticbeanstalk.com/api/create/";
+
+  axios({
+            method:'POST',
+            url:url,
+            header:{
+                "Content-Type": "multipart/form-data" 
+            },
+            data:data,
+        }
+        ).then(//function(response)
+            
+            response => {
+                const estado = response.data.status
+                setMessage(response.data.message)
+               // if (estado === 200)
+
+                console.log(estado)
+            }
+          //  console.log(response)
+        
+        
+        ).catch(function(response){
+            
+            console.log(response)
+
+        });
+
+}
 
   return (
     <>
@@ -87,7 +124,9 @@ const handleInputChange = (event)=> {
             <Grid item xs={6} sm={6} md={4} >
                 <Cart sentence1="Ahora haz que todos en la lista de tus amigos lo vean" sentence2="Enviar los videos" button1="Enviar" onClick={send} modo={0}></Cart>
             </Grid>
-
+            <div>
+              <p>{message}</p>
+            </div>
         </Grid>
 
         
