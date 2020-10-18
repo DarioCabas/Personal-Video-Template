@@ -26,11 +26,34 @@ const useStyles = makeStyles({
 
 
 
-const Cart = ({sentence1, sentence2, button1, onClick}) => {
+const Cart = ({sentence1, sentence2, button1, onClick, modo}) => {
 
   const classes = useStyles();
 
+  const estado = () =>{
+
+    if (modo === 0) {
+
+      return (<Button onClick={onClick} size="small" >{button1}</Button>)
+
+    } 
+    else {
+      return (
+           <input
+        type="file"
+        accept=".csv,.xlsx,.xls"
+        onChange={onClick}
+      />
+      )
+    }
+
+  }
+
+  
+
   return (
+
+  
 
     <Card className={classes.root} variant="outlined" >
       <CardContent>
@@ -44,7 +67,7 @@ const Cart = ({sentence1, sentence2, button1, onClick}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={onClick} size="small" >{button1}</Button>
+             {estado()}
       </CardActions>
     </Card>
   );
