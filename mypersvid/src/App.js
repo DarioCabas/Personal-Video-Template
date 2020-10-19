@@ -40,6 +40,7 @@ const App = () => {
 
   const [selectedFile, setSelectedFile] = useState();
   const [message, setMessage] = useState();
+  const [message2, setMessage2] = useState();
   const [activeCharge, setActiveCharge] = useState(false);
   const [activeGenerate, setActiveGenerate] = useState(true);
   const [activeSend, setActiveSend] = useState(true);
@@ -56,7 +57,7 @@ const App = () => {
           </div>
           <div>
             <p style={{color:"blue"}}
-            >Tus videos se estan generando</p>
+            >{message2}</p>
           </div>
         </div>
       )
@@ -92,16 +93,17 @@ const App = () => {
 
       response => {
         const estado = response.data
-        const pk = response.data.pk
+        const pk = response.data.data.pk
         setMessage(response.data.message)
+    
+        console.log(estado)
         if (estado.status === 200) {
+          console.log('este es el : '+ pk)
           generate(pk);
           setError(0);
         } else {
           setError(1);
         }
-
-        console.log(estado)
       }
       //  console.log(response)
 
@@ -113,8 +115,8 @@ const App = () => {
     });
   }
 
-  const generate = (e) => {
-
+  const generate = e => {
+console.log(e)
     const data = new FormData()
     data.append('pk', e)
     console.warn(e);
@@ -124,7 +126,7 @@ const App = () => {
       method: 'POST',
       url: url,
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/json"
       },
       data: data,
     }
