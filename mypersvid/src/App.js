@@ -22,7 +22,13 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     paddingLeft: '80px',
     paddingRight: '80px'
-  }
+  },
+
+  Column: {
+    display: 'table-cell',
+    justify:'center',
+    verticalAlign:'top'
+},
 }
 
 ));
@@ -69,7 +75,8 @@ const App = () => {
 
         response => {
           const estado = response.data
-          setMessage2(response.data.message)
+          const m4 = response.data.message
+          setMessage2(m4)
           console.log(response.status);
           console.log(response.data.message);
           if (estado.status === 200) {
@@ -97,20 +104,19 @@ const App = () => {
   const chargingbar = (event) => {
     if (charging === 1) {
       return (
-        <div className={classes.root}>
+        <div className={classes.Column} >
           <div  >
             <CircularProgress />
-
           </div>
-          <div>
+          <div >
             <p style={{ color: error === 0 ? 'blue' : 'red' }}
             >{message}</p>
           </div>
-          <div>
+          <div >
             <p style={{ color: error === 0 ? 'blue' : 'red' }}
             >{message2}</p>
           </div>
-          <div>
+          <div >
             <p style={{ color: error === 0 ? 'blue' : 'red'}}
             >{message3}</p>
           </div>
@@ -150,7 +156,8 @@ const App = () => {
         const estado = response.data
         const pk = response.data.data.pk
         setPkCampaign(pk)
-        setMessage(response.data.message)
+        const m1 = response.data.message
+        setMessage(m1)
 
         console.log(estado)
         if (estado.status === 200) {
@@ -183,7 +190,8 @@ const App = () => {
 
       response => {
         const estado = response.data
-        setMessage3(response.data.message)
+        const m3 = response.data.message
+        setMessage3(m3)
         console.log(response.status);
         console.log(response.data.message);
         if (estado.status === 200) {
@@ -222,11 +230,12 @@ const App = () => {
       },
       data: data,
     }
-    ).then(//function(response)
+    ).then(
 
       response => {
         const estado = response.data
-        setMessage2(response.data.message)
+        const m2 = response.data.message
+        setMessage2(m2)
         if (estado.status === 200) {
           setError(0);
           setListening(1);
@@ -237,7 +246,7 @@ const App = () => {
 
         console.log(estado)
       }
-      //  console.log(response)
+
 
 
     ).catch(function (response) {
@@ -258,13 +267,12 @@ const App = () => {
         </Grid>
 
         <Grid item xs={6} sm={6} md={4} >
-          <Cart sentence1="Ahora, genera los videos para cada uno de ellos" sentence2="Dale click en genera" button1="Generar" onClick={submit} modo={0} enable={activeGenerate}></Cart>
+          <Cart sentence1="Ahora, genera los videos para cada uno de ellos" sentence2="Dale click en generar" button1="Generar" onClick={submit} modo={0} enable={activeGenerate}></Cart>
         </Grid>
 
         <Grid item xs={6} sm={6} md={4} >
           <Cart sentence1="Listo, enviemoslo a todos tus amigos" sentence2="Enviar los videos" button1="Enviar" onClick={sendemail} modo={0} enable={activeSend}></Cart>
         </Grid>
-        
         <Grid container justify="center" item xs={12}  >
           <div>
             {chargingbar()}
