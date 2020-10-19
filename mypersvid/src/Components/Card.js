@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 
 
-const Cart = ({sentence1, sentence2, button1, onClick, modo}) => {
+const Cart = ({sentence1, sentence2, button1, onClick, modo, enable}) => {
 
   const classes = useStyles();
 
@@ -34,12 +34,13 @@ const Cart = ({sentence1, sentence2, button1, onClick, modo}) => {
 
     if (modo === 0) {
 
-      return (<Button onClick={onClick} size="small" >{button1}</Button>)
+      return (<Button onClick={onClick} size="small" disabled={enable}>{button1}</Button>)
 
     } 
     else {
       return (
            <input
+           disabled={enable}
         type="file"
         accept=".csv,.xlsx,.xls"
         onChange={onClick}
