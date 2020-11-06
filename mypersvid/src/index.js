@@ -5,6 +5,7 @@ import App from './App'
 //utilizar el componente
 
 
-ReactDOM.render( < App > < /App>,
+ReactDOM.render( < App > 
     document.getElementById('root')
+    </App>,
 )
