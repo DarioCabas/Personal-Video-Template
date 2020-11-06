@@ -17,8 +17,7 @@ export const renderRoutes = (routes = []) => (
         <BrowserRouter>
             <Switch>
                 {routes.map((route, index) => {
-                    const Guard = route.guard || Fragment;
-                    const Layout = route.layout || Fragment;
+                   
                     const Component = route.component;
 
                     return (
@@ -27,13 +26,13 @@ export const renderRoutes = (routes = []) => (
                             path={route.path}
                             exact={route.exact}
                             render={(props) => (
-                                <Guard>
-                                    <Layout>
-                                        {route.routes
+                               
+                                  
+                                        route.routes
                                             ? renderRoutes(route.routes)
-                                            : <Component {...props} />}
-                                    </Layout>
-                                </Guard>
+                                            : <Component {...props} />
+                                   
+                                
                             )}
                         />
                     );
@@ -51,7 +50,7 @@ const routes = [
       },
     {
         exact: true,
-        path: '/video/:URLVideo/:bg',
+        path: '/videos/:URLVideo/:bg',
         component: lazy(() => import('./views/VideoTemplate'))
     },
     {
