@@ -4,7 +4,7 @@ import Cart from '../../components/Card'
 import Grid from '@material-ui/core/Grid'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
-import './Send.css'
+import '../../assets/css/Send.css'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
