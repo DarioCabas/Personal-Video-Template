@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Title from './Components/Title'
-import Cart from './Components/Card'
+import Title from '../../components/Title'
+import Cart from '../../components/Card'
 import Grid from '@material-ui/core/Grid'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
@@ -64,7 +64,7 @@ const Send = () => {
   useEffect(() => {
     if (listening === 1) {
       console.log('listening');
-      let url = "http://test-backend-dev2.us-east-2.elasticbeanstalk.com/api/create/";
+      let url = "https://video.jrtec-test.tk/api/create/";
 
       axios({
         method: 'GET',
@@ -99,7 +99,7 @@ const Send = () => {
 
     }
     if (sending === 1) {
-      let url = ("http://test-backend-dev2.us-east-2.elasticbeanstalk.com/api/send/");
+      let url = ("https://video.jrtec-test.tk/api/send/");
 
       axios({
         method: 'GET',
@@ -182,7 +182,7 @@ const Send = () => {
     data.append('csv_file', selectedFile)
     data.append('campaign', 'tester1')
     console.warn(selectedFile);
-    let url = "http://test-backend-dev2.us-east-2.elasticbeanstalk.com/api/upload/";
+    let url = "https://video.jrtec-test.tk/api/upload/";
 
     axios({
       method: 'POST',
@@ -222,7 +222,7 @@ const Send = () => {
 
   const sendemail = () => {
 
-    let url = ("http://test-backend-dev2.us-east-2.elasticbeanstalk.com/api/send/" + pkCampaign);
+    let url = ("https://video.jrtec-test.tk/api/send/" + pkCampaign);
 
     axios({
       method: 'GET',
@@ -260,7 +260,7 @@ const Send = () => {
     const data = new FormData()
     data.append('pk', e)
     console.warn(e);
-    let url = "http://test-backend-dev2.us-east-2.elasticbeanstalk.com/api/create/";
+    let url = "https://video.jrtec-test.tk/api/create/";
 
     axios({
       method: 'POST',

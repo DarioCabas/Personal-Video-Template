@@ -8,7 +8,7 @@ const App = () => {
     return (
 
         <div id='principal'>
-             <CssBaseline />
+            <CssBaseline />
             {renderRoutes(routes)}
         </div>
     );

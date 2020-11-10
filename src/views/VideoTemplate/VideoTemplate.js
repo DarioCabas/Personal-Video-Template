@@ -43,21 +43,22 @@ const VideoTemplate = () => {
     return (
         <Box className={classes.root}>
             <CardMedia style={{ backgroundImage: BackImage, width: '100%', height: '100%',justifyContent:'center',alignItems:'center', display: 'flex', }}>
-                <ReactPlayer
-                    url={URL}
-                    className='react-player'
-                    width='70%'
-                    height='70%'
-                    controls
-                    playing
-                    volume='0.5'
-                />
+               <Box width='70%' height='70%' >
+                    <ReactPlayer
+                        url={URL}
+                        width= '100%'
+                        height= '100%'
+                        controls
+                        playing
+                        volume= {0.3}
+                    />
+                </Box> 
             </CardMedia>
 
 
         </Box>
     )
 
-
+}
 
 export default VideoTemplate

@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   makeStyles
 } from '@material-ui/core';
-import Page from '../../Components/Page';
+import Page from '../../components/Page';
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -10,14 +10,14 @@ import {
     BrowserRouter
 } from 'react-router-dom';
 
-import LoadingScreen from './Components/LoadingScreen';
+import LoadingScreen from './components/LoadingScreen';
 
 export const renderRoutes = (routes = []) => (
     <Suspense fallback={<LoadingScreen />}>
         <BrowserRouter>
             <Switch>
                 {routes.map((route, index) => {
-                   
+
                     const Component = route.component;
 
                     return (
@@ -26,13 +26,13 @@ export const renderRoutes = (routes = []) => (
                             path={route.path}
                             exact={route.exact}
                             render={(props) => (
-                               
-                                  
-                                        route.routes
-                                            ? renderRoutes(route.routes)
-                                            : <Component {...props} />
-                                   
-                                
+
+
+                                route.routes
+                                    ? renderRoutes(route.routes)
+                                    : <Component {...props} />
+
+
                             )}
                         />
                     );
@@ -47,7 +47,7 @@ const routes = [
         exact: true,
         path: '/404',
         component: lazy(() => import('./views/errors/NotFoundView'))
-      },
+    },
     {
         exact: true,
         path: '/videos/:URLVideo/:bg',
@@ -56,11 +56,11 @@ const routes = [
     {
         exact: true,
         path: '/',
-        component: lazy(() => import('./Send'))
-      },
+        component: lazy(() => import('./views/Home/Send'))
+    },
     {
         component: () => <Redirect to="/404" />
-      }
+    }
 
 ];
 
