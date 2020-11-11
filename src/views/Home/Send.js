@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Title from '../../components/Title'
-import Cart from '../../components/Card'
+import Title from 'src/components/Title'
+import Cart from 'src/components/Card'
 import Grid from '@material-ui/core/Grid'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
